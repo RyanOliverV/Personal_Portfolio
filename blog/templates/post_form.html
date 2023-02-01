@@ -1,0 +1,18 @@
+{% extends "base.html" %} <!-- imports the html code from the base.html template -->
+{% load crispy_forms_tags %} <!-- imports the crispy forms so they can be used in this html document -->
+{% block content %} <!-- overrides specifics parts of base.html -->
+<div class="container col-md-10" style="padding-top: 2em;">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %} <!-- prevents CSRF attacks -->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Blog Post</legend>
+                {{ form|crispy }} <!-- adds the crispy forms created in forms.py -->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-custom" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

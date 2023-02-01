@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="padding-top: 6em;">
+    <div class="row align-items-center text-center" style="padding-bottom: 8em;">
+      <div class="col">
+        <h2 class="about-title">About Me</h2>
+        <p class="text-muted">My name is Ryan, and I am a maker at heart; from making Minecraft servers growing up to putting new computers together – I love building. I am currently undergoing a master’s degree in Computing at Cardiff University with a focus on software engineering and data analytics, to fulfil my dream of becoming a developer. </p>
+        <p class="text-muted">I am incredibly passionate about wildlife; I achieved a 2:1 in my Zoology undergraduate degree at Liverpool John Moores University. Over the course of my life, I would love to contribute to animal wildlife organisations as much as possible and I have a genuine desire to make a difference in animal welfare. One of my long-term goals in life is to build an animal sanctuary and help animals in need.</p>
+      </div>
+  
+      <div class="col">
+          <img class="rounded-start img-fluid shadow-lg" src="https://personal-portfolio-website-files.s3.amazonaws.com/static/media/about.JPG" width="300">
+      </div>
+    </div>
+</div>
+<div class="container">
+  <!-- progress bars to demonstarte technical skills - created using bootstrap 5 -->
+  <!-- documentation found here: https://getbootstrap.com/docs/4.0/components/progress/ -->
+  <h1 class="about-title" style="padding-bottom: 1em;">Technical Skills</h1>		
+    <div style="padding-bottom: 8em;">
+    <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 90%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">HTML</span></div>
+      </div> <br>
+      <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">CSS</span></div>
+        </div> <br>
+      <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">JS</span></div>
+        </div><br>
+      <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">Python</span></div>
+      </div> <br>
+      <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">MySQL</span></div>
+      </div> <br>
+      <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">Bootstrap</span></div>
+      </div> <br>
+      <div class="progress" style="height: 30px">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">Django</span></div>
+      </div> <br>
+      <div class="progress" style="height: 30px;">
+        <div class="progress-bar bg-progress" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <span class="progress-text">Flask</span></div>
+      </div> <br>
+</div>
+</div>
+		<div class="container-fluid" style="padding-bottom: 7em;">
+			<!-- title -->
+			<div class="row text-center">
+				<div class="col">
+					<h1 class="about-title">Zoological Skills</h1>					
+				</div>
+			</div>
+			<!-- end of title -->
+
+      <!-- skills section - icons obtained from fontawesome-->
+      <!-- fontawesome is free to use and found here: https://fontawesome.com/ -->
+			<div class="row p-5">
+				<div class="col text-center">
+					<i class="fas fa-hippo fa-3x mb-4"></i>
+					<h3 class="about-sub-heading">Animal Care</h3>
+					<p class="text-muted">Providing feeds, watering, daily cleaning</p>
+				</div>
+				<div class="col text-center">
+					<i class="fas fa-magnifying-glass fa-3x mb-4"></i>
+					<h3 class="about-sub-heading">Species ID</h3>
+					<p class="text-muted">Identify organisms observed during field and lab work</p>
+				</div>
+				<div class="col text-center">
+					<i class="fas fa-chart-simple fa-3x mb-4"></i>
+					<h3 class="about-sub-heading">Statistics</h3>
+					<p class="text-muted">Understanding and using statistics and other ecological data</p>
+				</div>
+			</div>
+            <div class="row p-5">
+                <div class="col text-center">
+					<i class="fas fa-syringe fa-3x mb-4"></i>
+					<h3 class="about-sub-heading">Medication</h3>
+					<p class="text-muted">Administer medication, and do daily health checks</p>
+				</div>
+				<div class="col text-center">
+					<i class="fas fa-pen fa-3x mb-4"></i>
+					<h3 class="about-sub-heading">Writing</h3>
+					<p class="text-muted">Scientific Reports</p>
+				</div>
+				<div class="col text-center">
+					<i class="fas fa-walkie-talkie fa-3x mb-4"></i>
+					<h3 class="about-sub-heading">Communication</h3>
+					<p class="text-muted">Presentations, Educating the public </p>
+				</div>
+            </div>
+		</div>
+{% endblock content %}

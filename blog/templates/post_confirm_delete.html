@@ -1,0 +1,19 @@
+{% extends "base.html" %} <!-- imports the html code from the base.html template -->
+{% load crispy_forms_tags %} <!-- imports the crispy forms so they can be used in this html document -->
+{% block content %} <!-- overrides specifics parts of base.html -->
+<div class="container col" style="padding-top: 2em;">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %} <!-- prevents CSRF attacks -->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 form-title">Delete Post</legend>
+                <h2 class="form-title">Are you sure you want to delete the post "{{ object.title }}"?</h2> <!-- includes the post's title in the h2 -->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                <a class="btn btn-custom" href="{% url 'post-detail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

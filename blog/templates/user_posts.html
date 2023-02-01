@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="mb-3 text-center form-title">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+{% for post in posts %}
+<div class="blog-section">
+  <div class="container col-md-10">
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="author text-muted" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+          </div>
+          <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+          {% if user.is_authenticated %}
+          <form action="{% url 'like-post' post.pk %}" method="POST">
+          {% csrf_token %}
+          <div class="blog-interaction">
+          <button type="submit" name="post_id"value="{{ post.id }}" class="blog-btn"><i class="fa-solid fa-thumbs-up"></i></button>- {{ post.likes.count }} likes
+          </form>
+          <a href="{% url 'add-comment' post.pk %} "><i class="fa-solid fa-comment blog-icon"></i></a>
+          {% endif %}
+          </div>
+        </div>
+      </article>
+      </div>
+  {% endfor %}
+  <div class="container">
+  {% if is_paginated %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-custom mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-custom mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+  {% endif %}
+  </div>
+{% endblock content %}

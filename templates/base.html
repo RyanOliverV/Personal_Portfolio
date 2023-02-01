@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <meta charset="utf-8">
+    <!-- tag below allows the website to be viewable on mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+    <script src="https://kit.fontawesome.com/06e1971d77.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.cdnfonts.com/css/bogart" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arapey:400,400i,600|Open+Sans:300" rel="stylesheet">
+
+    {% if title %}
+        <title>Personal Portfolio - {{ title }}</title>
+    {% else %}
+        <title>Personal Portfolio</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md fixed-top navbar-light" style="background-color: #fefaf6;">
+        <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Left Side -->
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+            </ul>
+            <!-- Navbar Right Side -->
+            <ul class="navbar-nav">
+              {% if user.is_superuser %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'post-create' %}"><i class="fa-solid fa-pen-to-square fa-1x"></i></a>
+              </li>
+              {% endif %}
+              <!-- Changes the  navbar icons displayed depending on whether a user is signed in or not-->
+              {% if user.is_authenticated %}
+              <div class="dropdown">
+                <button class="btn dropdown-toggle nav-link" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-user fa-1x"></i>
+                </button>
+                <ul class="dropdown-menu" style="background-color: #fefaf6;" aria-labelledby="dropdown1">
+                  <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+              </div>
+              {% else %}
+              <div class="dropdown">
+                <button class="btn dropdown-toggle nav-link" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-user-plus fa-1x"></i>
+                </button>
+                <ul class="dropdown-menu " style="background-color: #fefaf6;" aria-labelledby="dropdown2">
+                  <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                  <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+                </ul>
+              </div>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="page-container">
+      <div class="wrapper">
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-10">
+              <!-- the below displays flash messages if there are any -->
+              <!-- an example of this is successful registration -->
+              {% if messages %}
+              {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </main>
+    <!-- creates a content block which is a placeholder for content from other html documents-->
+    <!-- https://docs.djangoproject.com/en/4.1/ref/templates/language/ -->
+    {% block content %}{% endblock %}
+  </div>
+</div>
+    {% include 'footer.html' %}   <!-- adds the footer html onto this document-->
+</body>
+</html>
